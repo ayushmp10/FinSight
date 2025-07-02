@@ -48,7 +48,8 @@ if __name__ == "__main__":
     c = conn.cursor()
     c.execute("DROP TABLE IF EXISTS expenses")
     c.execute(
-        "CREATE TABLE IF NOT EXISTS expenses (category TEXT, amount TEXT, date TEXT)"
+        "CREATE TABLE IF NOT EXISTS expenses "
+        "(category TEXT, amount TEXT, date TEXT)"
     )
     conn.commit()
 
@@ -56,7 +57,11 @@ if __name__ == "__main__":
     while True:
         print("Welcome to FinSight! Please select an option from below!")
         print("-----------------------------------")
-        print("Option 1: Log Expense\nOption 2: Get Gemini Reccomendation\nOption 3: Reccomended Stock\nOption 4: Show table\nOption 5: Exit")
+        print("Option 1: Log Expense\n"
+              "Option 2: Get Gemini Reccomendation\n"
+              "Option 3: Reccomended Stock\n"
+              "Option 4: Show table\n"
+              "Option 5: Exit")
         choice = input("Choice: ")
 
         if choice == "1":
