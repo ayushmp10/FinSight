@@ -14,7 +14,7 @@ class TestInvestment(unittest.TestCase):
 
     def test_get_biggest_gainers(self):
         data = [
-            {"name": "Stock A", "symbol": "A", 
+            {"name": "Stock A", "symbol": "A",
              "price": 100, "changesPercentage": 100},
             {"name": "Stock B", "symbol": "B", 
              "price": 200, "changesPercentage": 102},
@@ -35,7 +35,12 @@ class TestInvestment(unittest.TestCase):
         self.assertEqual(result, data[:5])
 
     def test_format_stock_info(self):
-        stock = {"name": "Stock A", "symbol": "A", "price": 100, "changesPercentage": 10}
+        stock = {
+            "name": "Stock A", 
+            "symbol": "A", 
+            "price": 100, 
+            "changesPercentage": 10
+        }
         result = Investment.format_stock_info(stock)
         expected = (
             f"{'Stock A':<35.35} "
