@@ -39,5 +39,6 @@ class TestInvestment(unittest.TestCase):
         self.assertIsNotNone(response)
         self.assertEqual(response, "Invest\n")
 
+
 if __name__ == "__main__":
     unittest.main()

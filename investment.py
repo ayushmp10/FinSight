@@ -38,11 +38,12 @@ class Investment:
             f"{stock_info['name']:<35.35} "
             f"{stock_info['symbol']:<10.10} "
             f"{float(stock_info['price']):>10.2f} "
-            f"{float(stock_info['changesPercentage']):>15.2f}" 
+            f"{float(stock_info['changesPercentage']):>15.2f}"
         )
-    
+
     def print_stock_info(self, stock):
         print(Investment.format_stock_info(stock))
+
 
 def extract_amount(input_string):
     match = re.search(
@@ -59,7 +60,7 @@ def extract_amount(input_string):
 
 if __name__ == "__main__":
     api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
-    url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey=5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
+    url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey={api_key}"
     investment = Investment(api_key)
     data = investment.make_request(url)
     stocks = investment.get_biggest_gainers(data, 50)
