@@ -1,6 +1,4 @@
 import os
-from google import genai
-from google.genai import types
 import sqlite3
 import google.generativeai as genai
 
