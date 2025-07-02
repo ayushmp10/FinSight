@@ -2,11 +2,9 @@ import os
 import sqlite3
 import google.generativeai as genai
 
-my_api_key = os.getenv('GENAI_KEY')
-genai.api_key = my_api_key
 
 try:
-    my_api_key = os.environ['GENAI_KEY']
+    my_api_key = "AIzaSyADnZyQXk2RN9KhJidpY13t2lXVDe33Rc8"
     genai.configure(api_key=my_api_key)
 except KeyError:
     raise ValueError("API key not found. Please set the 'GENAI_KEY' environment variable.")
