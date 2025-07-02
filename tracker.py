@@ -30,4 +30,4 @@ c.execute(
 conn.commit()
 conn.close()
 
-def insert_into_table(category, amount, date):
+#def insert_into_table(category, amount, date):

@@ -1,8 +1,11 @@
 import unittest
 from investment import Investment
+from tracker import ask_gemini
+import os
+from google import genai
+from google.genai import types
 
 class TestInvestment(unittest.TestCase):
-
     def setUp(self):
         self.api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
         self.url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey={self.api_key}"
@@ -21,5 +24,28 @@ class TestInvestment(unittest.TestCase):
         stock = {"name": "Stock A", "symbol": "A", "price": 100, "changesPercentage": 10}
         result = Investment.format_stock_info(stock)
         self.assertEqual(result, "This is the biggest stock gainer: Stock A Ticker: A\nThis is the price of the stock: 100\nThis is the change percent of the stock: 10\n")
+    
+    
+    def test_gemini(self):
+        my_api_key = os.getenv('GENAI_KEY')
+        genai.api_key = my_api_key
+
+        client = genai.Client(
+        api_key=my_api_key,
+        )
+        response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        config=types.GenerateContentConfig(
+        system_instruction="Only return a one word answer."
+        ),
+        contents="Say only hello back"
+        )
+        self.assertIsNotNone(response)
+        self.assertEqual(response.text, "Hello")
+
+
+if __name__ == "__main__":
+    unittest.main()    
+
 
 
