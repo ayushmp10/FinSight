@@ -11,6 +11,7 @@ try:
 except KeyError:
     raise ValueError("API key not found. Please set the 'GENAI_KEY' environment variable.")
 
+
 def ask_gemini(prompt):
     model = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
@@ -54,7 +55,7 @@ if __name__ == "__main__":
         print("-----------------------------------")
         print("Option 1: Log Expense\nOption 2: Get Gemini Reccomendation\nOption 3: Reccomended Stock\nOption 4: Show table\nOption 5: Exit")
         choice = input("Choice: ")
-        
+
         if choice == "1":
             category = input("Please enter the category of your purchase: ")
             amount = input("Please enter the amount of your purchase: ")

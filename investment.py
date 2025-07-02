@@ -67,6 +67,7 @@ if __name__ == "__main__":
     investment = Investment(api_key)
     data = investment.make_request(url)
     stocks = investment.get_biggest_gainers(data, 50)
-    print(f"{'Company':<35} {'Ticker':<10} {'Price':<10} {'Change Percent':<15}")
+    print(f"{'Company':<35} {'Ticker':<10} "
+      f"{'Price':<10} {'Change Percent':<15}")
     for stock in stocks:
         investment.print_stock_info(stock)
