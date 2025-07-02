@@ -68,22 +68,22 @@ if __name__ == "__main__":
             category = input("Please enter the category of your purchase: ")
             amount = input("Please enter the amount of your purchase: ")
             date = input("Please enter the date of your purchase "
-                         "(YYYY-MM-DD): ")
+                            "(YYYY-MM-DD): ")
             insert_into_table(category, amount, date)
         elif choice == "2":
             income = input("Enter your income for this month: ")
             print("Gemini is thinking...")
             table = get_table()
             prompt = ("Based off the following income " + income +
-                     "and the following table, provide me with some "
-                     "reccomendations with my budget as well as what you "
-                     "think about it, and where to mitigate spending and "
-                     "stuff. The remaining money I have left needs to be "
-                     "split between my savings account and my investing "
-                     "account. Assume I have a healthy savings account and "
-                     "explicitly tell me how much money I should transfer "
-                     "to my investment account. List this investment amount "
-                     "explicitly with 'AMOUNT:' in the response" + table)
+                        "and the following table, provide me with some "
+                        "reccomendations with my budget as well as what you "
+                        "think about it, and where to mitigate spending and "
+                        "stuff. The remaining money I have left needs to be "
+                        "split between my savings account and my investing "
+                        "account. Assume I have a healthy savings account and "
+                        "explicitly tell me how much money I should transfer "
+                        "to my investment account. List this investment amount "
+                        "explicitly with 'AMOUNT:' in the response" + table)
             response = ask_gemini(prompt)
             print(response)
             investment_api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
@@ -98,9 +98,9 @@ if __name__ == "__main__":
                 print("No budget plan has been created yet. Press 2 first")
                 continue
             print("\nTop 5 Investment Options - Largest growth in 24 hours "
-                  "and within recommended budget")
+                    "and within recommended budget")
             print(f"{'Company':<35.35} {'Ticker':<10.10} "
-                  f"{'Price':>10} {'Change Percent':>15}")
+                    f"{'Price':>10} {'Change Percent':>15}")
             for stock in investmentOptions:
                 investment.print_stock_info(stock)
             print("\n")
