@@ -7,7 +7,10 @@ import tracker
 class TestInvestment(unittest.TestCase):
     def setUp(self):
         self.api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
-        self.url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey={self.api_key}"
+        self.url = (
+            f"https://financialmodelingprep.com/stable/biggest-gainers"
+            f"?apikey={self.api_key}"
+        )
 
     def test_get_biggest_gainers(self):
         data = [
