@@ -1,9 +1,7 @@
 import unittest
 from investment import Investment
-from tracker import ask_gemini
 import os
-from google import genai
-from google.genai import types
+import tracker
 
 class TestInvestment(unittest.TestCase):
     def setUp(self):
@@ -27,21 +25,9 @@ class TestInvestment(unittest.TestCase):
     
     
     def test_gemini(self):
-        my_api_key = os.getenv('GENAI_KEY')
-        genai.api_key = my_api_key
-
-        client = genai.Client(
-        api_key=my_api_key,
-        )
-        response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        config=types.GenerateContentConfig(
-        system_instruction="Only return a one word answer."
-        ),
-        contents="Say only hello back"
-        )
+        response = tracker.ask_gemini("Generate a one word answer")
         self.assertIsNotNone(response)
-        self.assertEqual(response.text, "Hello")
+        self.assertEqual(response, "Invest\n")
 
 
 if __name__ == "__main__":

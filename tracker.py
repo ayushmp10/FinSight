@@ -2,22 +2,23 @@ import os
 from google import genai
 from google.genai import types
 import sqlite3
+import google.generativeai as genai
 
 my_api_key = os.getenv('GENAI_KEY')
 genai.api_key = my_api_key
 
-client = genai.Client(
-    api_key=my_api_key,
-)
+try:
+    my_api_key = os.environ['GENAI_KEY']
+    genai.configure(api_key=my_api_key)
+except KeyError:
+    raise ValueError("API key not found. Please set the 'GENAI_KEY' environment variable.")
 
 def ask_gemini(prompt):
-    response = client.models.generate_content(
-    model="gemini-2.5-flash",
-    config=types.GenerateContentConfig(
-      system_instruction="You are acting as a financial advisor, give good financial decisions and reccomendations for a person"
-    ),
-    contents=prompt
+    model = genai.GenerativeModel(
+        model_name="gemini-1.5-flash",
+        system_instruction="You are a financial advisor. Give thoughtful and relevant financial decisions and recommendations."
     )
+    response = model.generate_content(prompt)
     return response.text
 
 
@@ -28,6 +29,11 @@ c.execute(
 
 )
 conn.commit()
-conn.close()
+
 
 #def insert_into_table(category, amount, date):
+ #   c.execute("INSERT INTO expenses (category, amount, date) VALUES ('{category}', {amount}, '{date})')")
+  #  conn.commit()
+   # print("Expenses logged!")
+
+#insert_into_table("Grocery", 45.5, "2025-07-02")
