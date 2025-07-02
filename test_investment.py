@@ -14,13 +14,20 @@ class TestInvestment(unittest.TestCase):
 
     def test_get_biggest_gainers(self):
         data = [
-            {"name": "Stock A", "symbol": "A", "price": 100, "changesPercentage": 100},
-            {"name": "Stock B", "symbol": "B", "price": 200, "changesPercentage": 102},
-            {"name": "Stock C", "symbol": "C", "price": 200, "changesPercentage": 101},
-            {"name": "Stock D", "symbol": "D", "price": 200, "changesPercentage": 110},
-            {"name": "Stock E", "symbol": "E", "price": 200, "changesPercentage": 120},
-            {"name": "Stock F", "symbol": "F", "price": 200, "changesPercentage": 10},
-            {"name": "Stock G", "symbol": "G", "price": 250, "changesPercentage": 200}
+            {"name": "Stock A", "symbol": "A", 
+             "price": 100, "changesPercentage": 100},
+            {"name": "Stock B", "symbol": "B", 
+             "price": 200, "changesPercentage": 102},
+            {"name": "Stock C", "symbol": "C", 
+             "price": 200, "changesPercentage": 101},
+            {"name": "Stock D", "symbol": "D", 
+             "price": 200, "changesPercentage": 110},
+            {"name": "Stock E", "symbol": "E", 
+             "price": 200, "changesPercentage": 120},
+            {"name": "Stock F", "symbol": "F", 
+             "price": 200, "changesPercentage": 10},
+            {"name": "Stock G", "symbol": "G", 
+             "price": 250, "changesPercentage": 200}
         ]
         investment = Investment(self.api_key)
         data = investment.make_request(self.url)
