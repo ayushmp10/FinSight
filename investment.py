@@ -14,10 +14,16 @@ class Investment:
 
     def get_biggest_gainers(self, data, amount):
         if not data:
+            print("no data")
             return None
         stocks = []
         for stock in data:
-            if stock['price'] <= amount:
+            try:
+                price = float(stock['price'])
+            except (KeyError, ValueError, TypeError):
+                print("error")
+                continue  # skip stocks with invalid price
+            if price <= amount:
                 stocks.append(stock)
                 if len(stocks) == 5:
                     break
@@ -27,21 +33,26 @@ class Investment:
         if not stock_info:
             return "No stock data available."
         return (
-            f"{stock_info['name']:<35} "
-            f"{stock_info['symbol']:<10} "
-            f"{stock_info['price']:<10} "
-            f"{stock_info['changesPercentage']:<15}"
+            f"{stock_info['name']:<35.35} "      # left-align, max 35 chars
+            f"{stock_info['symbol']:<10.10} "   # left-align, max 10 chars
+            f"{float(stock_info['price']):>10.2f} "  # right-align, 2 decimals, width 10
+            f"{float(stock_info['changesPercentage']):>15.2f}"  # right-align, 2 decimals, width 15
         )
     
     def print_stock_info(self, stock):
         print(Investment.format_stock_info(stock))
 
 import re
-
 def extract_amount(input_string):
-    match = re.search(r'amount:\s*([0-9]+(?:\.[0-9]+)?)', input_string)
+    match = re.search(
+        r'amount[:\s\*]*\$?\s*([0-9,]+(?:\.[0-9]+)?)',
+        input_string,
+        re.IGNORECASE
+    )
     if match:
-        return float(match.group(1))
+        # Remove commas for thousands, e.g., 2,000 -> 2000
+        amount_str = match.group(1).replace(',', '')
+        return float(amount_str)
     return None
 
 if __name__ == "__main__":
