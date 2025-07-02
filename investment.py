@@ -60,7 +60,10 @@ def extract_amount(input_string):
 
 if __name__ == "__main__":
     api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
-    url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey={api_key}"
+    url = (
+        f"https://financialmodelingprep.com/stable/biggest-gainers"
+        f"?apikey={api_key}"
+    )
     investment = Investment(api_key)
     data = investment.make_request(url)
     stocks = investment.get_biggest_gainers(data, 50)

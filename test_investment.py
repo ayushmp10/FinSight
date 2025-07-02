@@ -3,6 +3,7 @@ from investment import Investment
 import os
 import tracker
 
+
 class TestInvestment(unittest.TestCase):
     def setUp(self):
         self.api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
@@ -33,7 +34,7 @@ class TestInvestment(unittest.TestCase):
             f"{10:>15.2f}"
         )
         self.assertEqual(result, expected)
-    
+
     def test_gemini(self):
         response = tracker.ask_gemini("Generate a one word answer")
         self.assertIsNotNone(response)

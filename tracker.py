@@ -38,6 +38,7 @@ def get_table():
         result += " | ".join(str(item) for item in row) + "\n"
     return result
 
+
 if __name__ == "__main__":
     conn = sqlite3.connect('expenses.db')
     c = conn.cursor()
