@@ -14,7 +14,10 @@ jobs:
 
       - name: Install tools
         run: python -m pip install --upgrade pip pytest
+      
+      - name: Install requirements
+        run: python -m pip install -r requirements.txt
 
       - name: Test with unittest
-        working-directory: ./expense-tracker
+        working-directory: .
         run: python3 -m unittest test_investment.py
