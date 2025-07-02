@@ -1,6 +1,7 @@
 import requests
 import re
 
+
 class Investment:
     def __init__(self, api_key):
         self.api_key = api_key
@@ -34,10 +35,10 @@ class Investment:
         if not stock_info:
             return "No stock data available."
         return (
-            f"{stock_info['name']:<35.35} "      # left-align, max 35 chars
-            f"{stock_info['symbol']:<10.10} "   # left-align, max 10 chars
-            f"{float(stock_info['price']):>10.2f} "  # right-align, 2 decimals, width 10
-            f"{float(stock_info['changesPercentage']):>15.2f}"  # right-align, 2 decimals, width 15
+            f"{stock_info['name']:<35.35} "
+            f"{stock_info['symbol']:<10.10} "
+            f"{float(stock_info['price']):>10.2f} "
+            f"{float(stock_info['changesPercentage']):>15.2f}" 
         )
     
     def print_stock_info(self, stock):
@@ -54,6 +55,7 @@ def extract_amount(input_string):
         amount_str = match.group(1).replace(',', '')
         return float(amount_str)
     return None
+
 
 if __name__ == "__main__":
     api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
