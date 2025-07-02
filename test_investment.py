@@ -34,12 +34,10 @@ class TestInvestment(unittest.TestCase):
         )
         self.assertEqual(result, expected)
     
-    
     def test_gemini(self):
         response = tracker.ask_gemini("Generate a one word answer")
         self.assertIsNotNone(response)
         self.assertEqual(response, "Invest\n")
-
 
 if __name__ == "__main__":
     unittest.main()
