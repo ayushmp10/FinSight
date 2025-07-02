@@ -9,13 +9,16 @@ try:
     my_api_key = "AIzaSyADnZyQXk2RN9KhJidpY13t2lXVDe33Rc8"
     genai.configure(api_key=my_api_key)
 except KeyError:
-    raise ValueError("API key not found. Please set the 'GENAI_KEY' environment variable.")
+    raise ValueError("API key not found. Set 'GENAI_KEY' environment variable.")
 
 
 def ask_gemini(prompt):
     model = genai.GenerativeModel(
         model_name="gemini-1.5-flash",
-        system_instruction="You are a financial advisor. Give thoughtful and relevant financial decisions and recommendations."
+        system_instruction=(
+            "You are a financial advisor. Give thoughtful and relevant "
+            "financial decisions and recommendations."
+        )
     )
     response = model.generate_content(prompt)
     return response.text
@@ -65,11 +68,18 @@ if __name__ == "__main__":
             income = input("Enter your income for this month: ")
             print("Gemini is thinking...")
             table = get_table()
-            prompt = "Based off the following income " + income + "and the following table, provide me with some reccomendations with my budget as well as what you think about it, and where to mitigate spending and stuff. The remaining money I have left needs to be split between my savings account and my investing account. Assume I have a healthy savings account and explicitly tell me how much money I should transfer to my investment account. List this investment amount explicitly with 'AMOUNT:' in the response" + table
+            prompt = "Based off the following income " + income + "and the following table,"
+            prompt = prompt + " provide me with some reccomendations with my budget as well"
+            prompt = prompt + "as what you think about it, and where to mitigate spending and "
+            prompt = prompt + "stuff. The remaining money I have left needs to be split between my "
+            prompt = prompt + "savings account and my investing account. Assume I have a healthy savings"
+            prompt = prompt + " account and explicitly tell me how much money I should transfer to my "
+            prompt = prompt + "investment account. List this investment amount explicitly with 'AMOUNT:' "
+            prompt = prompt + "in the response" + table
             response = ask_gemini(prompt)
             print(response)
             investment_api_key = "5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
-            url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey=5H9LohX4eRJoAHXeYftqgRrd2UrWkRdW"
+            url = f"https://financialmodelingprep.com/stable/biggest-gainers?apikey={investment_api_key}"
             investment = Investment(investment_api_key)
             data = investment.make_request(url)
             investmentOptions = investment.get_biggest_gainers(data, extract_amount(response))

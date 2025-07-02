@@ -16,17 +16,17 @@ class TestInvestment(unittest.TestCase):
         data = [
             {"name": "Stock A", "symbol": "A",
              "price": 100, "changesPercentage": 100},
-            {"name": "Stock B", "symbol": "B", 
+            {"name": "Stock B", "symbol": "B",
              "price": 200, "changesPercentage": 102},
-            {"name": "Stock C", "symbol": "C", 
+            {"name": "Stock C", "symbol": "C",
              "price": 200, "changesPercentage": 101},
-            {"name": "Stock D", "symbol": "D", 
+            {"name": "Stock D", "symbol": "D",
              "price": 200, "changesPercentage": 110},
-            {"name": "Stock E", "symbol": "E", 
+            {"name": "Stock E", "symbol": "E",
              "price": 200, "changesPercentage": 120},
-            {"name": "Stock F", "symbol": "F", 
+            {"name": "Stock F", "symbol": "F",
              "price": 200, "changesPercentage": 10},
-            {"name": "Stock G", "symbol": "G", 
+            {"name": "Stock G", "symbol": "G",
              "price": 250, "changesPercentage": 200}
         ]
         investment = Investment(self.api_key)
