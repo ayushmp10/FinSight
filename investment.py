@@ -1,4 +1,5 @@
 import requests
+import re
 
 class Investment:
     def __init__(self, api_key):
@@ -42,7 +43,6 @@ class Investment:
     def print_stock_info(self, stock):
         print(Investment.format_stock_info(stock))
 
-import re
 def extract_amount(input_string):
     match = re.search(
         r'amount[:\s\*]*\$?\s*([0-9,]+(?:\.[0-9]+)?)',

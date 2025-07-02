@@ -44,7 +44,6 @@ if __name__ == "__main__":
     c.execute("DROP TABLE IF EXISTS expenses")
     c.execute(
         "CREATE TABLE IF NOT EXISTS expenses (category TEXT, amount TEXT, date TEXT)"
-
     )
     conn.commit()
 
