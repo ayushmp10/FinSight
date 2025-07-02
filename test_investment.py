@@ -36,9 +36,9 @@ class TestInvestment(unittest.TestCase):
 
     def test_format_stock_info(self):
         stock = {
-            "name": "Stock A", 
-            "symbol": "A", 
-            "price": 100, 
+            "name": "Stock A",
+            "symbol": "A",
+            "price": 100,
             "changesPercentage": 10
         }
         result = Investment.format_stock_info(stock)

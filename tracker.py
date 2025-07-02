@@ -9,7 +9,7 @@ try:
     my_api_key = "AIzaSyADnZyQXk2RN9KhJidpY13t2lXVDe33Rc8"
     genai.configure(api_key=my_api_key)
 except KeyError:
-    raise ValueError("API key not found. Set 'GENAI_KEY' environment variable.")
+    raise ValueError("API key not found.")
 
 
 def ask_gemini(prompt):
