@@ -6,7 +6,7 @@ from investment import extract_amount
 
 
 try:
-    my_api_key = "AIzaSyADnZyQXk2RN9KhJidpY13t2lXVDe33Rc8"
+    my_api_key = "AIzaSyA4ZuoaiPodpE7CFou4k0rdwB6GkYAuCHg"
     genai.configure(api_key=my_api_key)
 except KeyError:
     raise ValueError("API key not found.")
