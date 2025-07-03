@@ -85,7 +85,7 @@ if __name__ == "__main__":
                 "account. Assume I have a healthy savings account and "
                 "explicitly tell me how much money I should transfer "
                 "to my investment account. List this investment amount "
-                "explicitly with 'AMOUNT:' in the response" + table
+                "explicitly with 'AMOUNT: $' in the response" + table
             )
             response = ask_gemini(prompt)
             print(response)
